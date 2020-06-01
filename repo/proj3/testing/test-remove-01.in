@@ -1,0 +1,20 @@
+#Remove a file and check the status
+I setup-01.inc
+> commit "Two files"
+<<<
+> rm hello.txt
+<<< * hello.txt
+> status
+=== Branches ===
+*master
+
+=== Staged Files ===
+
+=== Removed Files ===
+hello.txt
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+
+<<<

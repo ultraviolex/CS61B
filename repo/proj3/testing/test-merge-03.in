@@ -1,0 +1,72 @@
+# Check various merge error cases.
+I setup-01.inc
+> commit "master commit 1"
+<<<
+> branch other
+<<<
++ h.txt test03-v1.txt
+> add h.txt
+<<<
+> rm hi.txt
+<<<
+> commit "Add h.txt and remove g.txt"
+<<<
+> checkout other
+<<<
+> merge other
+Cannot merge a branch with itself.
+<<<
+> rm hello.txt
+<<<
++ k.txt test04-v1.txt
+> add k.txt
+<<<
+> commit "Add k.txt and remove f.txt"
+<<<
+> checkout master
+<<<
+> merge foobar
+A branch with that name does not exist.
+<<<
++ k.txt test01-v1.txt
+> merge other
+There is an untracked file in the way; delete it, or add and commit it first.
+<<<
+- k.txt
+> status
+=== Branches ===
+*master
+other
+
+=== Staged Files ===
+
+=== Removed Files ===
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+
+<<<
++ k.txt test01-v1.txt
+> add k.txt
+<<<
+> merge other
+You have uncommitted changes.
+<<<
+> rm k.txt
+<<<
+- k.txt
+> status
+=== Branches ===
+*master
+other
+
+=== Staged Files ===
+
+=== Removed Files ===
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+
+<<<

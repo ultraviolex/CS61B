@@ -1,0 +1,12 @@
+# Test add, modify, add, commit
+> init
+<<<
++ wug.txt wug.txt
+> add wug.txt
+<<<
++ wug.txt notwug.txt
+> add wug.txt
+<<<
+> commit wug.txt
+<<<
+= wug.txt notwug.txt

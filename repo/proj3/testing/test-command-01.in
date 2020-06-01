@@ -1,0 +1,5 @@
+# Check entering a nonexistent command.
+I prelude-01.inc
+> hell yeah
+No command with that name exists.
+<<<

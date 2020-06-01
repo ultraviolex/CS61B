@@ -1,0 +1,14 @@
+# A simple test of adding, committing, modifying, and checking out,
+# same as test02-basic-checkout.in
+> init
+<<<
++ wug.txt wug.txt
+> add wug.txt
+<<<
+> commit "added wug"
+<<<
++ wug.txt notwug.txt
+# Must change
+> checkout -- wug.txt
+<<<
+= wug.txt wug.txt

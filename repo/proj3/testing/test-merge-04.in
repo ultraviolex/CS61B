@@ -1,0 +1,27 @@
+# Test special cases of merge.
+I setup-01.inc
+> commit "master commit 1"
+<<<
+> branch b1
+<<<
++ h.txt test03-v1.txt
+> add h.txt
+<<<
+> commit "Add h.txt"
+<<<
+> branch b2
+<<<
+> rm hello.txt
+<<<
+> commit "remove f.txt"
+<<<
+> merge b1
+Given branch is an ancestor of the current branch.
+<<<
+> checkout b2
+<<<
+= hello.txt test01-v1.txt
+> merge master
+Current branch fast-forwarded.
+<<<
+* hello.txt

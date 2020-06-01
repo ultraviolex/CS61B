@@ -1,0 +1,61 @@
+# Create two branches and merge other into master with a merge conflict.
+I setup-01.inc
+> commit "Two files"
+<<<
+> branch other
+<<<
++ h.txt test03-v1.txt
+> add h.txt
+<<<
+> rm hi.txt
+<<<
++ hello.txt test03-v1.txt
+> add hello.txt
+<<<
+> commit "Add h.txt, remove hi.txt, and change hello.txt"
+<<<
+> checkout other
+<<<
++ hello.txt test02-v1.txt
+> add hello.txt
+<<<
++ k.txt test04-v1.txt
+> add k.txt
+<<<
+> commit "Add k.txt and modify f.txt"
+<<<
+> checkout master
+<<<
+> log
+===
+${COMMIT_HEAD}
+${ARBLINES}
+<<<*
+D MASTER_HEAD "${1}"
+> merge other
+Encountered a merge conflict.
+<<<
+* g.txt
+= h.txt test03-v1.txt
+= k.txt test04-v1.txt
+= hello.txt conflict01.txt
+> log
+${COMMIT_LOG}
+===
+commit ${MASTER_HEAD}
+${ARBLINES}
+<<<*
+> status
+=== Branches ===
+\*master
+other
+
+=== Staged Files ===
+
+=== Removed Files ===
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+
+<<<*

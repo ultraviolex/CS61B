@@ -1,0 +1,45 @@
+# Checkout multiple files
+> init
+<<<
++ helloworld.txt test01-v1.txt
+> add helloworld.txt
+<<<
++ hiworld.txt test02-v1.txt
+> add hiworld.txt
+<<<
+> commit "hello v1, hi v1"
+<<<
++ helloworld.txt test01-v2.txt
+> add helloworld.txt
+<<<
+> commit "hello v2, hi v1"
+<<<
+= helloworld.txt test01-v2.txt
+# Each ${HEADER} captures its commit UID.
+D UID "[a-f0-9]+"
+D HEADER "commit (${UID})"
+D DATE "Date: \w\w\w \w\w\w \d+ \d\d:\d\d:\d\d \d\d\d\d [-+]\d\d\d\d"
+> log
+===
+${HEADER}
+${DATE}
+hello v2, hi v1
+
+===
+${HEADER}
+${DATE}
+hello v1, hi v1
+
+===
+${HEADER}
+${DATE}
+initial commit
+
+<<<*
+# UID of commit 2
+D UID2 "${1}"
+# UID of commit 1
+D UID1 "${2}"
+> checkout ${UID1} -- helloworld.txt
+<<<
+= helloworld.txt test01-v1.txt

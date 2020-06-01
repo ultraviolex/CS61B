@@ -1,0 +1,51 @@
+# Test merge with no conflicts
+I setup-01.inc
+> commit "master commit 1"
+<<<
+> branch "other"
+<<<
++ a.txt test03-v1.txt
+> add a.txt
+<<<
+> rm hi.txt
+<<<
+> commit "add a.txt remove hi.txt"
+<<<
+> checkout other
+<<<
+> rm hello.txt
+<<<
++ b.txt test04-v1.txt
+> add b.txt
+<<<
+> commit "add b.txt remove hello.txt"
+<<<
+> checkout master
+<<<
+> merge other
+<<<
+* hi.txt
+* hello.txt
+= a.txt test03-v1.txt
+= b.txt test04-v1.txt
+> log
+===
+${COMMIT_HEAD}
+Merged other into master\.
+
+${ARBLINES}
+<<<*
+> status
+=== Branches ===
+*master
+other
+
+=== Staged Files ===
+
+=== Removed Files ===
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+
+<<<

@@ -1,0 +1,46 @@
+# Create two branches and merge other into master with a merge conflict.
+I prelude-01.inc
++ f.txt test01-v1.txt
++ g.txt test02-v1.txt
+> add g.txt
+<<<
+> add f.txt
+<<<
+> commit "Two files"
+<<<
+> branch other
+<<<
++ h.txt test03-v1.txt
+> add h.txt
+<<<
+> rm g.txt
+<<<
++ f.txt test01-v2.txt
+> add f.txt
+<<<
+> commit "Add h.txt, remove g.txt, and change f.txt"
+<<<
+> checkout other
+<<<
++ f.txt test02-v1.txt
+> add f.txt
+<<<
++ k.txt test03-v1.txt
+> add k.txt
+<<<
+> commit "Add k.txt and modify f.txt"
+<<<
+> checkout master
+<<<
+> log
+===
+${COMMIT_HEAD}
+${ARBLINES}
+<<<*
+D MASTER_HEAD "${1}"
+> merge other
+Encountered a merge conflict.
+<<<
+* g.txt
+= h.txt test03-v1.txt
+= k.txt test03-v1.txt

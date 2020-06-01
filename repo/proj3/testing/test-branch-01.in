@@ -1,0 +1,29 @@
+# Test making a branch.
+I setup-01.inc
+> commit "master commit 1"
+<<<
+> branch "other"
+<<<
+> checkout other
+<<<
++ hi.txt test02-v2.txt
+> add hi.txt
+<<<
+> commit "branch 1 commit 1"
+<<<
+> checkout master
+<<<
+> status
+=== Branches ===
+\*master
+other
+
+=== Staged Files ===
+
+=== Removed Files ===
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+
+<<<
